@@ -1,5 +1,7 @@
 package hiber.model;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,6 +9,7 @@ import javax.persistence.*;
 public class Car {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "model")
@@ -15,8 +18,7 @@ public class Car {
     @Column(name = "series")
     private int series;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
+    @OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private User user;
 
     public Car(String model, int series, User user) {

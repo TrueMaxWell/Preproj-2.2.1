@@ -41,7 +41,7 @@ public class UserDaoImp implements UserDao {
         query.setParameter("model", model);
         query.setParameter("series", series);
         Car car = (Car) query.uniqueResult();
-        return getUserById(car.getId());
+        return getUserById(car.getUser().getId());
     }
 
    @Override
@@ -52,9 +52,9 @@ public class UserDaoImp implements UserDao {
 
    @Override
    public User getUserById(long id) {
-      Query query1 = sessionFactory.getCurrentSession().createQuery("from User where id = :id");
-      query1.setParameter("id", id);
-      return (User) query1.uniqueResult();
+      Query query = sessionFactory.getCurrentSession().createQuery("from User where id = :id");
+      query.setParameter("id", id);
+      return (User) query.uniqueResult();
    }
 
 }
