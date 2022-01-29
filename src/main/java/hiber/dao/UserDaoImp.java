@@ -41,9 +41,20 @@ public class UserDaoImp implements UserDao {
         query.setParameter("model", model);
         query.setParameter("series", series);
         Car car = (Car) query.uniqueResult();
-        Query query1 = sessionFactory.getCurrentSession().createQuery("from User where id = :id");
-        query1.setParameter("id", car.getId());
-        return (User) query1.uniqueResult();
+        return getUserById(car.getId());
     }
+
+   @Override
+   public List<User> listUsersWithCar() {
+      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User where carOwner = true");
+      return query.getResultList();
+   }
+
+   @Override
+   public User getUserById(long id) {
+      Query query1 = sessionFactory.getCurrentSession().createQuery("from User where id = :id");
+      query1.setParameter("id", id);
+      return (User) query1.uniqueResult();
+   }
 
 }

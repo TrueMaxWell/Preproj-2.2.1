@@ -22,6 +22,7 @@ public class Car {
     public Car(String model, int series, User user) {
         this.model = model;
         this.series = series;
+        user.setCarOwner(true);
         this.user = user;
     }
 

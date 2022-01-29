@@ -24,8 +24,13 @@ public class User {
    @Column(name = "email")
    private String email;
 
+   @Column(name = "carOwner")
+   private boolean carOwner = false;
+
    public User() {}
-   
+
+
+
    public User(String firstName, String lastName, String email) {
       this.firstName = firstName;
       this.lastName = lastName;
@@ -62,5 +67,13 @@ public class User {
 
    public void setEmail(String email) {
       this.email = email;
+   }
+
+   public boolean isCarOwner() {
+      return carOwner;
+   }
+
+   public void setCarOwner(boolean carOwner) {
+      this.carOwner = carOwner;
    }
 }

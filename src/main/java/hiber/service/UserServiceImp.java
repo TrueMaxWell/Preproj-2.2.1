@@ -37,4 +37,14 @@ public class UserServiceImp implements UserService {
       return userDao.searchUserByCar(model, series);
    }
 
+   @Override
+   public List<User> listUsersWithCar() {
+      return userDao.listUsersWithCar();
+   }
+
+   @Override
+   public User getUserById(long id) {
+      return userDao.getUserById(id);
+   }
+
 }
