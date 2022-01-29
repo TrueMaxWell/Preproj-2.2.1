@@ -27,9 +27,9 @@ public class User {
    @Column(name = "carOwner")
    private boolean carOwner = false;
 
-   public User() {}
+   public User() {
 
-
+   }
 
    public User(String firstName, String lastName, String email) {
       this.firstName = firstName;
