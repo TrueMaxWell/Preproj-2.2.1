@@ -10,6 +10,11 @@ public class User {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
+   @Override
+   public String toString() {
+      return "Id = " + id + "\nName = " + firstName + "\nLastName = " + lastName + "\nEmail = " + email;
+   }
+
    @Column(name = "name")
    private String firstName;
 
