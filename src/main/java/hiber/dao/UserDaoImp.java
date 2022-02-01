@@ -41,10 +41,11 @@ public class UserDaoImp implements UserDao {
         query.setParameter("model", model);
         query.setParameter("series", series);
         Car car = (Car) query.uniqueResult();
-        return getUserById(car.getUser().getId());
+        return car.getUser();
     }
 
    @Override
+   @SuppressWarnings("unchecked")
    public List<User> listUsersWithCar() {
       TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User where carOwner = true");
       return query.getResultList();
